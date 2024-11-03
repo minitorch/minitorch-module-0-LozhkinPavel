@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, Sequence, Tuple
+from typing import Any, Dict, Optional, Sequence, Tuple, List
 
 
 class Module:
@@ -41,7 +41,7 @@ class Module:
         for _, module in self._modules.items():
             module.eval()
 
-    def named_parameters(self) -> Sequence[Tuple[str, Parameter]]:
+    def named_parameters(self) -> List[Tuple[str, Parameter]]:
         """Collect all the parameters of this module and its descendents.
 
         Returns
@@ -56,7 +56,7 @@ class Module:
         for name, module in self._modules.items():
             params = module.named_parameters()
             for i in range(len(params)):
-                params[i] = (f'{name}.' + params[i][0], params[i][1])
+                params[i] = (f"{name}." + params[i][0], params[i][1])
             res += params
         return res
 
@@ -104,6 +104,7 @@ class Module:
         return None
 
     def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Froward pass"""
         return self.forward(*args, **kwargs)
 
     def __repr__(self) -> str:
