@@ -6,3 +6,7 @@
 * Docs: https://minitorch.github.io/
 
 * Overview: https://minitorch.github.io/module0/module0/
+
+* Hand-created classifier
+
+<img src="assets/classifier.png" width="50%">
